@@ -4,35 +4,52 @@ class Home extends CI_Controller
     public function index()
     {   
 
-        $error = "";
-        $data = "";
+        //memanggil library session
+        $this->load->library("session");
+        //set session
+        $this->session->set_userdata("nama","politeknik");
+        //show session
+        echo 'nama anda : ' .$this->session->userdata("nama");
+        echo '<br>session di hapus</br>';
+        //hapus session nama
+        $this->session->unset_userdata("nama");
+        echo 'nama anda : ' .$this->session->userdata("nama");
+        
+        
+        
+        
+    
+        
+        
+        // $error = "";
+        // $data = "";
 
-        if($this->input->method() == "post")
-        {
-            //konfigurasi
-            $config ['upload_path'] = './gambar/';
-            $config ['allowed_types'] = 'gif|jpg|png';
-            $config ['max_size'] = 100;
-            $config ['max_width'] = 1024;
-            $config ['max_height'] = 768;
+        // if($this->input->method() == "post")
+        // {
+        //     //konfigurasi
+        //     $config ['upload_path'] = './gambar/';
+        //     $config ['allowed_types'] = 'gif|jpg|png';
+        //     $config ['max_size'] = 100;
+        //     $config ['max_width'] = 1024;
+        //     $config ['max_height'] = 768;
 
-            //panggil library
-            $this->load->library('upload', $config);
+        //     //panggil library
+        //     $this->load->library('upload', $config);
 
-            //cek apakah gagal upload
-            if (!$this->upload->do_upload('gambar'))
-            {
-                $error = $this->upload->display_errors();
-            }
-            else
-            {
-                $data = $this->upload->data();
-            }
-        }
-        $this->load->view("HomeView", array(
-            'error' => $error,
-            'data' => $data
-        ));
+        //     //cek apakah gagal upload
+        //     if (!$this->upload->do_upload('gambar'))
+        //     {
+        //         $error = $this->upload->display_errors();
+        //     }
+        //     else
+        //     {
+        //         $data = $this->upload->data();
+        //     }
+        // }
+        // $this->load->view("HomeView", array(
+        //     'error' => $error,
+        //     'data' => $data
+        // ));
 
 
 
