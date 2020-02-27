@@ -4,8 +4,7 @@ echo $error;
 if($data) {
     ?>
     <h3>Gambar Berhasil diupload</h3>
-    <img src=" . ./gambar/<?php echo $data ["file_name"]; ?>"  
-    width="200"> 
+    <img src="../gambar/<?php echo $data["file_name"]; ?>" width="200"> 
     <?php 
 }
 ?>
