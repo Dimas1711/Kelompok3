@@ -61,28 +61,39 @@ class Home extends CI_Controller{
             // }
             // $this->load->view("HomeView");
 
-            $error = "";
-            $data = "";
+            // $error = "";
+            // $data = "";
 
-            if ($this->input->method() == "post") {
-                $config ['upload_path'] = "./gambar/";
-                $config ['allowed_types'] = 'gif|jpg|png';
-                $config ['max_size'] = 100;
-                $config ['max_width'] = 1024;
-                $config ['max_height'] = 768;
+            // if ($this->input->method() == "post") {
+            //     $config ['upload_path'] = "./gambar/";
+            //     $config ['allowed_types'] = 'gif|jpg|png';
+            //     $config ['max_size'] = 100;
+            //     $config ['max_width'] = 1024;
+            //     $config ['max_height'] = 768;
 
-                $this->load->library('upload' , $config);
+            //     $this->load->library('upload' , $config);
 
-                if (!$this->upload->do_upload('gambar')) {
-                    $err = $this->upload->display_errors();
-                } else {
-                    $data = $this->upload->data();
-                }
-            }
-            $this->load->view("HomeView" , array(
-                'error' => $error,
-                'data' => $data
-            ));
+            //     if (!$this->upload->do_upload('gambar')) {
+            //         $err = $this->upload->display_errors();
+            //     } else {
+            //         $data = $this->upload->data();
+            //     }
+            // }
+            // $this->load->view("HomeView" , array(
+            //     'error' => $error,
+            //     'data' => $data
+            // ));
+                 //memanggil library session
+        $this->load->library("session");
+        //set session
+        $this->session->set_userdata("nama","politeknik");
+        //show session
+        echo 'nama anda : ' .$this->session->userdata("nama");
+        echo '<br>session di hapus</br>';
+        //hapus session nama
+        $this->session->unset_userdata("nama");
+        echo 'nama anda : ' .$this->session->userdata("nama");
+        
         }
 }
 

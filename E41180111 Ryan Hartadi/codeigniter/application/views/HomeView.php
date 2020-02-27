@@ -14,18 +14,21 @@
     Status : <?php echo $data ["status"];?><br>
     Website : <?php echo $data ["website"];?> --> 
 
-    <?php 
-    echo $error;
-    if ($data) {
-        ?>
-        <h3>Gambar berhasil Di Upload</h3>
-        <img src="../gambar/<?php echo $data ["file_name"];?>" width="200">
-   <?php 
-    }
+
+    <h1>upload gambar</h1>
+<?php
+echo $error;
+if($data)
+{
     ?>
-    <form action="" method="post" enctype="multipart/form-data">
-        <input type="file" name="gambar" id="gambar"><br>
-        <button type="submit">Kirim</button>
-    </form>
+    <h3>Gambar Berhasil di upload</h3>
+    <img src="./gambar/<?php echo $data ["file_name"];?>" width="200">
+    <?php
+}
+?>
+
+<form action="" method="post" enctype="multipart/form-data">
+<input type="file" name="gambar" id="gambar"/>
+<button type="submit">upload</button>
 </body>
 </html>
