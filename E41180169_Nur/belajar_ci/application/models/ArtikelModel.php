@@ -19,5 +19,10 @@ public function ubah ($data = array(), $id) {
     return $this->db->update("artikel", $data);
     
 }
+public function hapus ($id) {
+    $this->load->database();
+    $this->db->where('id', $id);
+    return $this->db->delete("artikel");
+}
 }
 ?>

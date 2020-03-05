@@ -198,21 +198,32 @@ public function tambah() {
     }
     } $this->load->view("FormView");
 }
-public function ubah() {
+public function ubah($id) {
     $this->load->model("ArtikelModel");
-    if ($this->update->method() == "post2") {
+    $data["artikel"]=
+    $this->ArtikelModel->detail($id);
+    if ($this->input->method() == "post") {
         $ubah = $this->ArtikelModel->ubah(array(
-            'judul' => $this->update->post2("judul"),
-            'penulis' => $this->update->post2("penulis"),
-            'isi' => $this->update->post2("isi"),
+            'judul' => $this->input->post("judul"),
+            'penulis' => $this->input->post("penulis"),
+            'isi' => $this->input->post("isi"),
             'tanggal' => date ("Y-m-d H:i:s")
-        ));
+        ),$id);
     if ($ubah) {
         echo "Ubah data berhasil";
     }else {
         echo "Ubah data gagal";
     }
-    } $this->load->view("FormView2");
+    } $this->load->view("FormView2", $data);
+}
+public function hapus($id){
+    $kembali = base_url();
+    $this->load->model("ArtikelModel");
+    $hapus = $this->ArtikelModel->hapus($id);
+    if ($hapus) {
+        echo "Data berhasil dihapus";
+        redirect($kembali);
+    }
 }
 }
 ?>

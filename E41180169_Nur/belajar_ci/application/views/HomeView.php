@@ -18,7 +18,7 @@ foreach ($artikel as $row) {
         <td>
             <a href="<?php echo "index.php/home/detail/"
             . $row->id; ?>">Detail</a>
-            <a href="<?php echo "index.php/home/ubah/"
+            <a href="<?php echo "home/ubah/"
             . $row->id; ?>">Ubah</a>
             <a href="<?php echo "index.php/home/hapus/"
             . $row->id; ?>">Hapus</a>
