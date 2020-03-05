@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/belajar_ci/';
+$config['base_url'] = 'http://localhost/repo-Project-Semester-4/E41180105_Dimas/belajar_crud/';
 
 /*
 |--------------------------------------------------------------------------
