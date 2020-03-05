@@ -28,7 +28,7 @@ foreach ($artikel as $row) {
 }
 ?>
     </table>
-}
+
 
 
 

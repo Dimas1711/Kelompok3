@@ -178,7 +178,7 @@ $this->load->view("HomeView", $data);
 public function detail ($id) {
     $this->load->model("ArtikelModel");
     $data = array(
-        "artikel" => $this->ArtikeModel->detail($id)
+        "artikel" => $this->ArtikelModel->detail($id)
     );
     $this->load->view("DetailView", $data);
 }
@@ -198,5 +198,23 @@ public function tambah() {
     }
     } $this->load->view("FormView");
 }
+public function ubah() {
+    $this->load->model("ArtikelModel");
+    if ($this->update->method() == "post2") {
+        $ubah = $this->ArtikelModel->ubah(array(
+            'judul' => $this->update->post2("judul"),
+            'penulis' => $this->update->post2("penulis"),
+            'isi' => $this->update->post2("isi"),
+            'tanggal' => date ("Y-m-d H:i:s")
+        ));
+    if ($ubah) {
+        echo "Ubah data berhasil";
+    }else {
+        echo "Ubah data gagal";
+    }
+    } $this->load->view("FormView2");
+}
 }
 ?>
+
+
