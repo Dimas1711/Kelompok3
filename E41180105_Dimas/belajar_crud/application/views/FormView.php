@@ -2,7 +2,7 @@
 <form action="" method="post">
     <div>
         <label for="judul">Judul :</label><br>
-        <input type="text" name="judul" id="judul">
+        <input type="text" name="judul" id="judul" >
     </div>
     <div>
         <label for="penulis">Penulis :</label><br>

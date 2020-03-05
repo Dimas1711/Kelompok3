@@ -43,6 +43,7 @@ class Home extends CI_Controller
     public function ubah($id)
     {
         $this->load->model("ArtikelModel");
+        $data ["artikel"] = $this->ArtikelModel->detail($id);
         if($this->input->method() == "post")
         {
             $update = $this->ArtikelModel->ubah(array(
@@ -50,17 +51,24 @@ class Home extends CI_Controller
                 'penulis' => $this->input->post("penulis"),
                 'isi' => $this->input->post("isi"),
                 'tanggal' => date ("Y-m-s H:i:s")
-            ));
+            ), $id);
             if($update)
             {
                 echo "Sukses Update Artikel";
             }
             else
             {
-                echo "Sukses Update Artikel";
+                echo "Gagal Update Artikel";
             }
         }
-        $this->load->view("FormUpdateView");
+        $this->load->view("FormUpdateView", $data);
+    }
+    public function hapus($id)
+    {
+        $kembali = base_url();
+        $this->load->model("ArtikelModel");
+        $hapus = $this->ArtikelModel->hapus($id);
+        redirect($kembali);
     }
     
 }
