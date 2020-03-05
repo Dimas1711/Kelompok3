@@ -26,7 +26,6 @@ class Home extends CI_Controller
 
 
 
-
         // $this->load->model("UserModel"); 
         // $tambah = $this->UserModel->tambah(array(
         //     //data yang akan ditambahkan

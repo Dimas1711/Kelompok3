@@ -1,6 +1,72 @@
 <?php
 class Home extends CI_Controller { // mengextends CI_Controller
 public function index () {
+$this->load->model("ArtikelModel");
+$data = array(
+    "artikel" => $this->ArtikelModel->get()
+);
+$this->load->view("HomeView", $data);
+
+
+
+// $this->load->model("UserModel");
+// $hapus = $this->UserModel->hapus(3);
+// if ($hapus) {
+//     echo "Hapus data berhasil";
+// }
+
+
+
+// $this->load->model("UserModel");
+// $ubah = $this->UserModel->ubah(array(
+//     'nama' => 'Agus', //data yang diubah
+//     'email' => 'agus@gmail.com',
+//     'alamat' => 'Jember'
+// ), 1); //id yang dipilih
+// if ($ubah) {
+//     echo "Ubah data berhasil";
+// }
+
+
+
+// $this->load->model("UserModel"); //memanggil UserModel
+// $tambah = $this->UserModel->tambah(array(
+//     //data yang akan ditambahkan
+//     'nama' => 'Andri', 'email' => 'Andri@polije.ac.id', 'alamat' => 'ponorogo'
+// ));
+// if ($tambah) {
+//     echo "Tambah data berhasil";
+// }
+
+
+
+
+// $this->load->model("UserModel"); //memanggil UserModel
+// echo '<pre>';
+// print_r($this->UserModel->get());
+// echo '</pre>';
+
+
+
+
+// $this->load->library('table'); //memanggil library table
+// $template = array(
+//     "table_open"=>"<table border=1 cellpadding=3>"
+// );
+// //set table template
+// $this->table->set_template($template);
+// $this->table->set_caption
+// ("<h1>Menampilkan Table dengan HTML Table Class </h1>"); //caption
+// $data = array (//data yang akan dimasukkan ke tabel
+//     array ('Nama', 'Email', 'Jenis Kelamin'),
+//     array ('Frengki', 'frengki@gmail.com', 'laki-laki'),
+//     array ('lutfi', 'lutfi@gmail.com', 'laki-laki'),
+//     array ('kholik', 'frengki@gmail.com', 'Perempuan'));
+//     echo $this->table->generate ($data); //tampilkan tabel
+
+
+
+
 // //memanggil library session
 // $this->load->library("session");
 // //set session
@@ -16,28 +82,27 @@ public function index () {
 
 
 
+//     $error = "";
+//     $data = "";
 
-    $error = "";
-    $data = "";
+// if ($this->input->method() == "post") {
+//     //konfigurasi
+// $config ['upload_path'] = './gambar/';
+// $config ['allowed_types'] = 'gif|png|jpg';
+// $config ['max_size'] = 2000;
+// $config ['max_width'] = 2000;
+// $config ['max_height'] = 2000;
+//     //panggil library
+//     $this->load->library('upload', $config);
 
-if ($this->input->method() == "post") {
-    //konfigurasi
-$config ['upload_path'] = './gambar/';
-$config ['allowed_types'] = 'gif|png|jpg';
-$config ['max_size'] = 2000;
-$config ['max_width'] = 2000;
-$config ['max_height'] = 2000;
-    //panggil library
-    $this->load->library('upload', $config);
-
-    //cek apakah gagal upload
-    if (!$this->upload->do_upload('gambar')) {
-        $error = $this->upload->display_errors();
-    } else {//jika file berhasil diupload
-    $data = $this->upload->data();
-}
-}
-    $this->load->view("HomeView", array('error' => $error, 'data' => $data));
+//     //cek apakah gagal upload
+//     if (!$this->upload->do_upload('gambar')) {
+//         $error = $this->upload->display_errors();
+//     } else {//jika file berhasil diupload
+//     $data = $this->upload->data();
+// }
+// }
+//     $this->load->view("HomeView", array('error' => $error, 'data' => $data));
 
 
 
@@ -110,5 +175,46 @@ $config ['max_height'] = 2000;
     // $this->load->view ("HomeView", array ("data" => $dataArr)); //memanggil Homeview dan data array
 // echo "Selamat Datang";
 }
+public function detail ($id) {
+    $this->load->model("ArtikelModel");
+    $data = array(
+        "artikel" => $this->ArtikelModel->detail($id)
+    );
+    $this->load->view("DetailView", $data);
+}
+public function tambah() {
+    $this->load->model("ArtikelModel");
+    if ($this->input->method() == "post") {
+        $insert = $this->ArtikelModel->tambah(array(
+            'judul' => $this->input->post("judul"),
+            'penulis' => $this->input->post("penulis"),
+            'isi' => $this->input->post("isi"),
+            'tanggal' => date ("Y-m-d H:i:s")
+        ));
+    if ($insert) {
+        echo "Sukses tambah artikel.";
+    }else {
+        echo "Gagal tambah artikel.";
+    }
+    } $this->load->view("FormView");
+}
+public function ubah() {
+    $this->load->model("ArtikelModel");
+    if ($this->update->method() == "post2") {
+        $ubah = $this->ArtikelModel->ubah(array(
+            'judul' => $this->update->post2("judul"),
+            'penulis' => $this->update->post2("penulis"),
+            'isi' => $this->update->post2("isi"),
+            'tanggal' => date ("Y-m-d H:i:s")
+        ));
+    if ($ubah) {
+        echo "Ubah data berhasil";
+    }else {
+        echo "Ubah data gagal";
+    }
+    } $this->load->view("FormView2");
+}
 }
 ?>
+
+
