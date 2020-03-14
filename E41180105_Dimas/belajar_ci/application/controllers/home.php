@@ -3,53 +3,114 @@ class Home extends CI_Controller
 {
     public function index()
     {   
+        $this->load->model("UserModel"); 
+        $hapus = $this->UserModel->hapus(4);
+        if ($hapus)
+        {
+            echo "hapus data berhasil";
+        }
 
-        //memanggil library session
-        $this->load->library("session");
-        //set session
-        $this->session->set_userdata("nama","politeknik");
-        //show session
-        echo 'nama anda : ' .$this->session->userdata("nama");
-        echo '<br>session di hapus</br>';
-        //hapus session nama
-        $this->session->unset_userdata("nama");
-        echo 'nama anda : ' .$this->session->userdata("nama");
+
+
+        // $this->load->model("UserModel"); 
+        // $ubah = $this->UserModel->ubah(array(
+        //     //data yang akan ditambahkan
+        //     'nama' => 'agus', //data yang diubah
+        //     'email' => 'agus@gmail.com',
+        //     'alamat' => 'jember'),1); //id yang dipilih
+        // if ($ubah)
+        // {
+        //     echo "ubah data berhasil";
+        // }
+
+
+
+
+        // $this->load->model("UserModel"); 
+        // $tambah = $this->UserModel->tambah(array(
+        //     //data yang akan ditambahkan
+        //     'nama' => 'Andri',
+        //     'email' => 'Andri@gmail.com',
+        //     'alamat' => 'Ponorogo'
+        // ));
+        // if ($tambah)
+        // {
+        //     echo "tambah data berhasil";
+        // }
+
+
+        // $this->load->model("UserModel"); //memanggil UserModel
+        // echo '<pre>';
+        // print_r($this->UserModel->get());
+        // echo '</pre>';
+
+        // $this->load->library("table");
+        // $template = array(
+        //     "table_open"=>"<table border=1 cellpaddin=3>"
+        // );
+
+        // //set table template
+        // $this->table->set_template($template);
+        // $this->table->set_caption
+        // ("<h1>Menampilkan table dengan HTML table class</h1>"); //caption
+        // $data = array(
+        //     array('nama','email','jenis kelamin'),
+        //     array('Frengki','frengki@gmail.com','laki - laki'),
+        //     array('lutfi','lutfi@gmail.com','laki - laki'),
+        //     array('kholik','kholik@gmail.com','perempuan')
+        // );
+        // echo $this->table->generate($data);
+
+
+
+
+
+        // //memanggil library session
+        // $this->load->library("session");
+        // //set session
+        // $this->session->set_userdata("nama","politeknik");
+        // //show session
+        // echo 'nama anda : ' .$this->session->userdata("nama");
+        // echo '<br>session di hapus</br>';
+        // //hapus session nama
+        // $this->session->unset_userdata("nama");
+        // echo 'nama anda : ' .$this->session->userdata("nama");
         
         
         
         
     
         
-        
-        // $error = "";
-        // $data = "";
+            
+            // $error = "";
+            // $data = "";
 
-        // if($this->input->method() == "post")
-        // {
-        //     //konfigurasi
-        //     $config ['upload_path'] = './gambar/';
-        //     $config ['allowed_types'] = 'gif|jpg|png';
-        //     $config ['max_size'] = 100;
-        //     $config ['max_width'] = 1024;
-        //     $config ['max_height'] = 768;
+            // if($this->input->method() == "post")
+            // {
+            //     //konfigurasi
+            //     $config ['upload_path'] = './gambar/';
+            //     $config ['allowed_types'] = 'gif|jpg|png';
+            //     $config ['max_size'] = 100;
+            //     $config ['max_width'] = 1024;
+            //     $config ['max_height'] = 768;
 
-        //     //panggil library
-        //     $this->load->library('upload', $config);
+            //     //panggil library
+            //     $this->load->library('upload', $config);
 
-        //     //cek apakah gagal upload
-        //     if (!$this->upload->do_upload('gambar'))
-        //     {
-        //         $error = $this->upload->display_errors();
-        //     }
-        //     else
-        //     {
-        //         $data = $this->upload->data();
-        //     }
-        // }
-        // $this->load->view("HomeView", array(
-        //     'error' => $error,
-        //     'data' => $data
-        // ));
+            //     //cek apakah gagal upload
+            //     if (!$this->upload->do_upload('gambar'))
+            //     {
+            //         $error = $this->upload->display_errors();
+            //     }
+            //     else
+            //     {
+            //         $data = $this->upload->data();
+            //     }
+            // }
+            // $this->load->view("HomeView", array(
+            //     'error' => $error,
+            //     'data' => $data
+            // ));
 
 
 
