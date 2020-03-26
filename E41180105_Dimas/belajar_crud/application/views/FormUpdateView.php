@@ -1,6 +1,5 @@
 <h1>Ubah Artikel : </h1>
-        <form action="" method="post">
-
+    <form action="" method="post">
     <div>
         <label for="judul">Judul :</label><br>
         <input type="text" name="judul" id="judul" value="<?= $artikel[0]->judul?>" >

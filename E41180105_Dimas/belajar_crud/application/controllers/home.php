@@ -54,6 +54,7 @@ class Home extends CI_Controller
             ), $id);
             if($update)
             {
+                $data ["artikel"] = $this->ArtikelModel->detail($id);
                 echo "Sukses Update Artikel";
             }
             else
